@@ -1,10 +1,11 @@
 {
   "manifest_version": 3,
   "name": "AdBlock Detector Bypasser",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Bypasses aggressive AdBlock detectors on various websites.",
   "permissions": [
-    "storage"
+    "storage",
+    "activeTab"
   ],
   "background": {
     "service_worker": "background.js"
@@ -27,6 +28,12 @@
       "matches": ["<all_urls>"],
       "js": ["content-bridge.js"],
       "run_at": "document_start"
+    },
+    {
+      "matches": ["<all_urls>"],
+      "js": ["bypass.js"],
+      "run_at": "document_start",
+      "world": "MAIN"
     }
   ],
   "web_accessible_resources": [
